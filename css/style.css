@@ -1,0 +1,16 @@
+/* regra */
+
+.row{
+    background: rgb(164, 164, 248);
+    margin: .2rem;
+    padding: .2rem;
+}
+.container{
+    background: rgb(190, 190, 240);
+    padding: .2rem;
+}
+.coluna {
+    border: 5px solid #fff;
+    background:rgb(247, 209, 215);
+    
+}
