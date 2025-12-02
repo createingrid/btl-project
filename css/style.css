@@ -141,5 +141,48 @@
 /*   box-shadow: 1px 1px 15px 5px #0000003d; */
 }
 
+/* filtros */
+.portfolio-filters{
+  list-style: none;
+  margin: 10px auto 20px auto;
+  text-align: center;
+}
+/* herança = todas as lis */
+.portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  font-size:1.5rem ;
+  text-align: center;
+  background: #fdfdff;
+  color: #1448da;
+  border-radius: 0.2rem;
+  border-radius: 0.2rem;
+  justify-content: center;
+  align-items: center;
+  
+
+
+}
+
+.portfolio-filters li:hover,
+.portfolio-filters li.filter-active{
+
+  filter: brightness(95%);
+  background: #9aa6c5;
+  color: #020014;
+  
+
+
+
+}
+
+/* o site em telas até 575px */
+
+@media(max-width: 575px){
+  .portfolio-filters li{
+    font-size:1rem ;
+  }
+}
+
 
 
