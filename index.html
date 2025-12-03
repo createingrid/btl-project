@@ -56,10 +56,13 @@
               <a class="nav-link active" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#Explorar">Explorar</a>
+              <a class="nav-link" href="#sobre">Sobre</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#Constelacoes">Constelações</a>
+              <a class="nav-link" href="#explorar">Explorar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#exploracao">Exploração</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#Curiosidades">Curiosidades</a>
@@ -175,7 +178,7 @@
 
 
   <!-- SOBRE nós -->
-  <section class="about py-5" id="about">
+  <section class="sobre py-5" id="sobre">
     <div class="container">
       <div class="row align-items-center g-4">
         <div class="col-lg-5">
@@ -185,9 +188,9 @@
         <div class="col-lg-7">
           <h3 class="mb-3">Sobre nós</h3>
           <p>
-            <strong>Between the Lines</strong> explora o universo de forma
-            simples e envolvente, revelando mistérios, curiosidades e
-            histórias que tornam o cosmos fascinante.
+            <strong>Beyond Galaxies</strong> Beyound Galaxies é um portal visual e informativo dedicado ao espaço profundo. Aqui você vai
+            explorar galáxias distantes, nebulosas impressionantes, fenômenos cósmicos e conteúdos que revelam a beleza
+            e o mistério do que existe além do que os olhos alcançam.
           </p>
 
           <ul class="list-unstyled mt-4">
@@ -283,9 +286,7 @@
           <div class="card card-body text-center shadow h-100">
             <i class="bi bi-hurricane"></i>
             <span class="purecounter fs-3 fw-bold" data-purecounter-start="0" data-purecounter-end="5400"></span>
-            <p><strong>Onde Galáxias Encontram Mundos: Uma Jornada pelos Universos de Estrelas e Planetas</strong></p>
-            <small>Desde os vastos aglomerados estelares até a busca por vida em exoplanetas distantes, desvendamos as
-              conexões cósmicas que moldam a nossa existência</small>
+            <p><strong>Uma jornada pelas galáxias, estrelas e mundos além da nossa imaginação</small>
             <a href="#" class="btn btn-outline-primary mt-3">Leia mais</a>
           </div>
         </div>
@@ -346,7 +347,7 @@
     </div>
 
   </section>
-  <section class="destinos pt-5 mb-5" id="destinos">
+  <section class="exploracao pt-5 mb-5" id="exploracao">
 
     <!-- Titulo da Seção -->
     <div class="container text-center">
@@ -604,8 +605,32 @@
   </section>
 
   <section class="contato" id="contato">
+    <div class="container text-center" data-aos="fade-up"> 
+
+      <h2 class="badge rounded-pill text-bg-info">contato</h2>
+      <div class="fs-3">
+        <span>precisa de contato</span>
+        <span> Entre em contato conosco.</span>
+
+      </div>
+    </div>
+
     <div class="container">
-      <h2>contato</h2>
+
+      <div class="row">
+        <!-- Coluna Esquerda Dados -->
+          <div class="col-lg-6">
+            coluna dados
+          </div>
+
+          <!-- Direita formulario -->
+           <div class="col-lg-6">
+            coluna formulario
+           </div>
+
+      </div>
+
+
     </div>
 
   </section>
@@ -683,6 +708,13 @@
         });
       }
     });
+
+    //Ativar ou selecionar o menu ao clicar na seção
+    new bootstrap.ScrollSpy(document.body,{
+      target:'#navbarNav',
+    });
+
+
 
   </script>
 

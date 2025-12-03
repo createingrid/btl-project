@@ -1,4 +1,15 @@
 /* hero */
+
+.nav-link{
+  color: #0f0f0f;
+}
+.nav-link:hover{
+  color: rgb(187, 158, 221);
+}
+
+
+
+
 .hero{
     padding: 0;
 }
