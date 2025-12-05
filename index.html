@@ -188,7 +188,8 @@
         <div class="col-lg-7">
           <h3 class="mb-3">Sobre nós</h3>
           <p>
-            <strong>Beyond Galaxies</strong> Beyound Galaxies é um portal visual e informativo dedicado ao espaço profundo. Aqui você vai
+            <strong>Beyond Galaxies</strong> Beyound Galaxies é um portal visual e informativo dedicado ao espaço
+            profundo. Aqui você vai
             explorar galáxias distantes, nebulosas impressionantes, fenômenos cósmicos e conteúdos que revelam a beleza
             e o mistério do que existe além do que os olhos alcançam.
           </p>
@@ -602,8 +603,8 @@
     </div>
   </section>
 
-  <section class="contato" id="contato">
-    <div class="container text-center" data-aos="fade-up"> 
+  <section class="contato pt-5 mb-3" id="contato">
+    <div class="container text-center" data-aos="">
 
       <h2 class="badge rounded-pill text-bg-info">contato</h2>
       <div class="fs-3">
@@ -617,62 +618,96 @@
 
       <div class="row">
         <!-- Coluna Esquerda Dados -->
-          <div class="col-lg-6">
+        <div class="col-lg-6">
 
           <div class="row gy-4">
 
             <!-- Quadrado 1 -->
-             <div class="col-md-6">
-               INFO  1
-
-             </div>
-
-              <!-- Quadrado 2 -->
-             <div class="col-md-6">
-              INFO  2
-
-             </div>
-
-             <!-- Quadrado 3 -->
-             <div class="col-md-6">
-              INFO 3
-
-             </div>
-
-              <!-- Quadrado 4 -->
-             <div class="col-md-6">
-              INFO 4
-
-             </div>
-
-
+             <!-- ENDEREÇO -->
+            <div class="col-md-6">
+              <div class="info-item">
+                <i class="bi bi-geo-alt"></i>
+                <h3>Endereço</h3>
 
               </div>
             </div>
+
+            <!-- Quadrado 2 -->
+             <!-- TELEFONE -->
+            <div class="col-md-6">
+              <div class="info-item">
+                <i class="bi bi-whatsapp"></i>
+                <h3>Whatsapp</h3>
+                <span>(11)</span>
+                <p>(11)</p>
+              </div>
+            </div>
+
+            <!-- Quadrado 3 -->
+            <div class="col-md-6">
+              INFO 3
+
+            </div>
+
+            <!-- Quadrado 4 -->
+            <div class="col-md-6">
+              INFO 4
+
+            </div>
+
+
+
+          </div>
         </div>
 
-          <!-- Direita formulario -->
-           <div class="col-lg-6">
-            <form action="" method="post">
-              <div class="row gy-4">
 
-                <!-- campo nome  -->
-                 <div class="col-md-6">
-                  <label for="nome"> nome completo</label>
-                  <input type="text" name="nome" required>
-                 </div>
+        <!-- Direita formulario -->
+        <div class="col-lg-6">
+
+          <form action="https://formspree.io/f/xpwvlraj" method="post" class="form-contato">
+
+            <div class="row gy-4">
+
+              <!-- campo nome  -->
+              <div class="col-md-6">
+                <label for="nome"> nome completo</label>
+                <input type="text" name="nome" required>
+              </div>
+              <!-- CAMPO EMAIL -->
+              <div class="col-md-6">
+                <label for="email"> Email</label>
+                <input type="email" name="email" required>
+              </div>
+              <!-- CAMPO TELEFONE -->
+              <div class="col-md-6">
+                <label for="tel">WhastApp </label>
+                <input type="tel" name="telefone" id="telefone" required>
+              </div>
+              <!-- CAMPO ASSUNTO -->
+              <div class="col-md-6">
+                <label for="">Assunto</label>
+                <input type="text" name="" required>
+              </div>
+
+              <!-- CAMPO DE MENSAGEM -->
+
+              <div class="col-12">
+                <textarea name="mensagem" id="mensagem" rows="6" required></textarea>
+              </div>
+                 
+                <!-- BOTÂO ENVIAR -->
+              <div class="col-12 text-center">
+                <button type="submit"> 
+                  Enviar
+                </button>
+
+              </div>
 
 
+            </div>
+          </form>
 
-
-
-
-
-
-                 </div>
-            </form>
-            
-           </div>
+        </div>
 
       </div>
 
@@ -756,9 +791,63 @@
     });
 
     //Ativar ou selecionar o menu ao clicar na seção
-    new bootstrap.ScrollSpy(document.body,{
-      target:'#navbarNav',
+    new bootstrap.ScrollSpy(document.body, {
+      target: '#navbarNav',
     });
+    // Máscara do telefone
+    const telefoneInput = document.getElementById("telefone");
+
+    if (telefoneInput) {
+        telefoneInput.addEventListener("input", (e) => {
+            let input = e.target.value.replace(/\D/g, "");
+            if (input.length > 11) input = input.slice(0, 11);
+
+            let formatted = "";
+            if (input.length > 0) formatted += "(" + input.slice(0, 2);
+            if (input.length >= 3) formatted += ") " + input.slice(2, 7);
+            if (input.length >= 8) formatted += "-" + input.slice(7, 11);
+
+            e.target.value = formatted;
+        });
+    }
+
+    // Validação e envio do formulário com limpeza
+    const form = document.querySelector(".form-contato");
+
+    if (form) {
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault(); // Impede a atualização da página
+
+            const telefoneValor = telefoneInput?.value.replace(/\D/g, "");
+            if (!telefoneValor || telefoneValor.length !== 11) {
+                alert("Por favor, insira um telefone válido com 11 dígitos.");
+                telefoneInput?.focus();
+                return;
+            }
+
+            const formData = new FormData(form);
+            const action = form.getAttribute("action");
+
+            try {
+                const response = await fetch(action, {
+                    method: "POST",
+                    body: formData,
+                    headers: { "Accept": "application/json" }
+                });
+
+                if (response.ok) {
+                    alert("Mensagem enviada com sucesso!");
+                    form.reset();
+                } else {
+                    alert("Erro ao enviar a mensagem. Tente novamente.");
+                }
+
+            } catch (error) {
+                alert("Erro de conexão. Verifique sua internet.");
+            }
+        });
+    }
+
 
 
 
